@@ -1,0 +1,24 @@
+# Jekyll configuration for echocc00.github.io/awesome-echocc00
+title: echocc00 · Project Portfolio
+description: Portfolio & project index for @echocc00 — Cloud Security, Network Engineering, AI-Driven SecOps
+theme: minima
+author: echocc00
+email: ""
+
+# Exclude from processing
+exclude:
+  - SECURITY.md
+  - CODEOWNERS
+  - LICENSE
+  - .github/
+  - release-drafter.yml
+
+# GitHub metadata (auto-populated)
+show_downloads: false
+github:
+  repository_url: https://github.com/echocc00/awesome-echocc00
+  owner_name: echocc00
+
+# Minima theme customization
+minima:
+  skin: dark
