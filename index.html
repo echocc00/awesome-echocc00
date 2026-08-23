@@ -8,57 +8,265 @@
 
   <!-- PWA Manifest -->
   <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
   <meta name="theme-color" content="#020617">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="echocc00">
 
-  <!-- Inline minimal CSS to redirect to README -->
   <style>
+    :root {
+      --bg: #020617;
+      --surface: #0f172a;
+      --border: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --cyan: #22d3ee;
+      --emerald: #34d399;
+      --violet: #a78bfa;
+      --amber: #fbbf24;
+      --rose: #fb7185;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
-      background: #020617;
-      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* Header */
+    header { text-align: center; margin-bottom: 3rem; }
+    .pulse {
+      width: 14px; height: 14px;
+      background: var(--cyan);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--cyan), var(--emerald));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--muted); font-size: 1rem; }
+    .links { margin-top: 1rem; }
+    .links a {
+      color: var(--cyan);
+      text-decoration: none;
+      margin: 0 0.5rem;
+      font-size: 0.875rem;
+    }
+    .links a:hover { text-decoration: underline; }
+
+    /* Project cards */
+    h2 {
+      font-size: 1.25rem;
+      margin: 2rem 0 1rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      transition: transform 0.2s, border-color 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--cyan);
+    }
+    .card-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .tag-security { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+    .tag-network { background: rgba(251, 191, 36, 0.15); color: var(--amber); }
+    .tag-content { background: rgba(167, 139, 250, 0.15); color: var(--violet); }
+    .tag-fork { background: rgba(148, 163, 184, 0.15); color: var(--muted); }
+    .card-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .card-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+    }
+    .card-meta {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .card-meta span {
+      padding: 2px 6px;
+      background: rgba(34, 211, 238, 0.1);
+      border-radius: 3px;
+    }
+
+    /* Preview gallery */
+    .preview {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .preview-item {
+      background: rgba(2, 6, 23, 0.5);
+      border: 1px dashed var(--border);
+      border-radius: 6px;
+      aspect-ratio: 16 / 9;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.75rem;
     }
-    h1 { font-size: 1.5rem; margin-bottom: 1rem; color: #22d3ee; }
-    p { color: #94a3b8; font-size: 0.875rem; margin-bottom: 1rem; text-align: center; max-width: 500px; }
-    a {
-      color: #22d3ee;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border: 1px solid #22d3ee;
-      border-radius: 4px;
-      transition: background 0.2s;
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.75rem;
     }
-    a:hover { background: rgba(34, 211, 238, 0.1); }
-    .pulse {
-      width: 12px;
-      height: 12px;
-      background: #22d3ee;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-      margin-bottom: 2rem;
-    }
-    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+    footer a { color: var(--cyan); text-decoration: none; }
   </style>
 </head>
 <body>
-  <div class="pulse"></div>
-  <h1>echocc00 · Project Portfolio</h1>
-  <p>Cloud Security · Network Engineering · AI-Driven SecOps</p>
-  <a href="https://github.com/echocc00">View on GitHub →</a>
+  <div class="container">
+    <header>
+      <div class="pulse"></div>
+      <h1>echocc00</h1>
+      <p class="subtitle">Cloud Security · Network Engineering · AI-Driven SecOps</p>
+      <div class="links">
+        <a href="https://github.com/echocc00">GitHub</a> ·
+        <a href="README.md">README</a> ·
+        <a href="awesome-echocc00/">Projects Index</a>
+      </div>
+    </header>
+
+    <h2>🚀 Projects</h2>
+    <div class="grid">
+      <a href="https://github.com/echocc00/SecSight" class="card">
+        <span class="card-tag tag-security">SECURITY</span>
+        <div class="card-title">SecSight</div>
+        <div class="card-desc">AI 安全运维平台 · SOC Copilot + SOAR 自动处置 · 22 剧本</div>
+        <div class="card-meta">
+          <span>v0.5.1</span><span>Apache-2.0</span><span>234 tests</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/echocc00/SecOpent" class="card">
+        <span class="card-tag tag-security">SECURITY</span>
+        <div class="card-title">SecOpent</div>
+        <div class="card-desc">Catalog-driven 授权渗透测试工作台 · FastAPI + React Case Studio</div>
+        <div class="card-meta">
+          <span>v1.1.1-stable</span><span>Apache-2.0</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/echocc00/VidSlice" class="card">
+        <span class="card-tag tag-security">SECURITY</span>
+        <div class="card-title">VidSlice</div>
+        <div class="card-desc">opencut-materials · 第三方素材向量索引 + Ed25519 签名</div>
+        <div class="card-meta">
+          <span>v0.7.10</span><span>Apache-2.0</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/echocc00/NetSage" class="card">
+        <span class="card-tag tag-network">NETWORK</span>
+        <div class="card-title">NetSage</div>
+        <div class="card-desc">AI 网络工程师平台 · 8 Agent + 三道闸(仿真/校验/审批)</div>
+        <div class="card-meta">
+          <span>v0.1.1</span><span>Apache-2.0</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/echocc00/opencut002" class="card">
+        <span class="card-tag tag-content">CONTENT</span>
+        <div class="card-title">OpenCut v3</div>
+        <div class="card-desc">AI 多领域短视频生产平台 · 20 阶段管道 · TTS + Remotion</div>
+        <div class="card-meta">
+          <span>v0.6.5</span><span>Apache-2.0</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/echocc00/hydro-fork" class="card">
+        <span class="card-tag tag-fork">FORK</span>
+        <div class="card-title">hydro-fork</div>
+        <div class="card-desc">hydro-dev/Hydro 的二次开发分支 · 信息学 OJ</div>
+        <div class="card-meta">
+          <span>fork</span><span>AGPL-3.0</span>
+        </div>
+      </a>
+    </div>
+
+    <h2>📸 Preview Gallery</h2>
+    <div class="preview">
+      <p style="font-size: 0.875rem; color: var(--muted); margin-bottom: 0.5rem;">
+        Project screenshots coming soon. Each placeholder shows where demo GIFs / architecture diagrams will go.
+      </p>
+      <div class="preview-grid">
+        <div class="preview-item">SecSight · Dashboard</div>
+        <div class="preview-item">SecOpent · Case Studio</div>
+        <div class="preview-item">NetSage · Design Workshop</div>
+        <div class="preview-item">OpenCut · Pipeline Output</div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        <a href="https://github.com/echocc00">GitHub</a> ·
+        <a href="SECURITY.md">Security</a> ·
+        <a href="LICENSE">License</a> ·
+        <a href="CODEOWNERS">Contributors</a>
+      </p>
+      <p style="margin-top: 0.5rem;">All projects Apache-2.0 unless otherwise noted · Last updated 2026-08-23</p>
+    </footer>
+  </div>
 
   <script>
     // Register Service Worker for PWA
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
-          .then(reg => console.log('SW registered:', reg.scope))
-          .catch(err => console.log('SW failed:', err));
+          .then(reg => console.log('[PWA] SW registered:', reg.scope))
+          .catch(err => console.log('[PWA] SW failed:', err));
       });
     }
   </script>
