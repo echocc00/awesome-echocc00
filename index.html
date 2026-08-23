@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>echocc00 · Project Portfolio</title>
+  <meta name="description" content="Portfolio & project index for @echocc00 — Cloud Security, Network Engineering, AI-Driven SecOps">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#020617">
+
+  <!-- Inline minimal CSS to redirect to README -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+      background: #020617;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 1rem; color: #22d3ee; }
+    p { color: #94a3b8; font-size: 0.875rem; margin-bottom: 1rem; text-align: center; max-width: 500px; }
+    a {
+      color: #22d3ee;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1px solid #22d3ee;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    a:hover { background: rgba(34, 211, 238, 0.1); }
+    .pulse {
+      width: 12px;
+      height: 12px;
+      background: #22d3ee;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      margin-bottom: 2rem;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+  </style>
+</head>
+<body>
+  <div class="pulse"></div>
+  <h1>echocc00 · Project Portfolio</h1>
+  <p>Cloud Security · Network Engineering · AI-Driven SecOps</p>
+  <a href="https://github.com/echocc00">View on GitHub →</a>
+
+  <script>
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => console.log('SW registered:', reg.scope))
+          .catch(err => console.log('SW failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>
