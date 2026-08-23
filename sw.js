@@ -1,11 +1,12 @@
 // Service Worker for echocc00 portfolio PWA
 // Caches core assets for offline access.
 
-const CACHE_NAME = 'echocc00-portfolio-v1';
+const CACHE_NAME = 'echocc00-portfolio-v2';
 const ASSETS = [
   '/awesome-echocc00/',
   '/awesome-echocc00/index.html',
   '/awesome-echocc00/manifest.webmanifest',
+  '/awesome-echocc00/icon.svg',
 ];
 
 // Install: cache core assets
@@ -38,7 +39,6 @@ self.addEventListener('fetch', (event) => {
 
       return fetch(event.request)
         .then((response) => {
-          // Cache successful same-origin responses
           if (response.ok && event.request.url.startsWith(self.location.origin)) {
             const clone = response.clone();
             caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
@@ -46,11 +46,17 @@ self.addEventListener('fetch', (event) => {
           return response;
         })
         .catch(() => {
-          // Offline fallback
           if (event.request.destination === 'document') {
             return caches.match('/awesome-echocc00/index.html');
           }
         });
     })
   );
+});
+
+// Listen for skip waiting messages (from reload button)
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
