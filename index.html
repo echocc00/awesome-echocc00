@@ -66,18 +66,45 @@
     }
     .links a:hover { text-decoration: underline; }
 
-    /* Stats - github-readme-stats */
+    /* Action buttons */
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    .btn:hover { border-color: var(--cyan); color: var(--cyan); }
+    .btn-primary {
+      background: var(--cyan);
+      color: var(--bg);
+      border-color: var(--cyan);
+      font-weight: 600;
+    }
+    .btn-primary:hover { background: var(--emerald); border-color: var(--emerald); color: var(--bg); }
+
+    /* Stats */
     .stats-readme {
       display: grid;
       grid-template-columns: 1fr;
       max-width: 600px;
-      margin: 1.5rem auto;
+      margin: 1rem auto;
       gap: 0.5rem;
     }
-    .stats-readme img {
-      width: 100%;
-      height: auto;
-    }
+    .stats-readme img { width: 100%; height: auto; }
     .stats-row {
       display: flex;
       flex-wrap: wrap;
@@ -102,15 +129,8 @@
       margin-bottom: 0.75rem;
       font-weight: 500;
     }
-    .contrib img {
-      max-width: 100%;
-      height: auto;
-    }
-    .contrib-caption {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 0.5rem;
-    }
+    .contrib img { max-width: 100%; height: auto; }
+    .contrib-caption { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; }
 
     /* Search */
     .search-wrap {
@@ -205,10 +225,7 @@
       color: inherit;
       display: block;
     }
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: var(--cyan);
-    }
+    .card:hover { transform: translateY(-2px); border-color: var(--cyan); }
     .card.hidden { display: none; }
     .card-header {
       display: flex;
@@ -227,10 +244,7 @@
     .tag-network  { background: rgba(251, 191, 36, 0.15); color: var(--amber); }
     .tag-content  { background: rgba(167, 139, 250, 0.15); color: var(--violet); }
     .tag-fork     { background: rgba(148, 163, 184, 0.15); color: var(--muted); }
-    .card-stars {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
+    .card-stars { font-size: 0.75rem; color: var(--muted); }
     .card-title {
       font-size: 1.125rem;
       font-weight: 600;
@@ -271,6 +285,81 @@
       float: right;
       font-family: monospace;
     }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.375rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      padding: 0.625rem 0;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem;
+      top: 1rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--cyan);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--cyan);
+    }
+    .timeline-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-family: monospace;
+      margin-bottom: 0.125rem;
+    }
+    .timeline-title {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .timeline-title a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .timeline-title a:hover { color: var(--cyan); }
+    .timeline-desc {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      margin-top: 0.125rem;
+    }
+
+    /* Activity feed */
+    .activity {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .activity-item {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8125rem;
+    }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-icon { color: var(--cyan); flex-shrink: 0; width: 18px; }
+    .activity-content { flex: 1; color: var(--muted); }
+    .activity-content a { color: var(--cyan); text-decoration: none; }
+    .activity-content a:hover { text-decoration: underline; }
+    .activity-time { font-size: 0.75rem; color: var(--muted); margin-top: 0.125rem; }
 
     /* Preview gallery */
     .preview {
@@ -350,6 +439,29 @@
       font-weight: 600;
     }
 
+    /* Toast */
+    .toast {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--emerald);
+      color: var(--emerald);
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.3s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
     footer {
       text-align: center;
       margin-top: 2rem;
@@ -370,6 +482,16 @@
       <div class="links">
         <a href="https://github.com/echocc00">GitHub</a> ·
         <a href="README.md">README</a>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="actions">
+        <button class="btn btn-primary" id="download-readme">
+          📥 Export README
+        </button>
+        <a class="btn" href="https://github.com/echocc00" target="_blank" rel="noopener">
+          ⭐ Follow on GitHub
+        </a>
       </div>
 
       <div class="stats-row">
@@ -400,7 +522,7 @@
       <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
       </svg>
-      <input type="search" class="search" id="search" placeholder="Search projects (fuzzy match: type 'sec' → security projects, 'video' → content)...">
+      <input type="search" class="search" id="search" placeholder="Search projects (fuzzy match: 'sec' → security, 'video' → content)...">
     </div>
     <p class="search-meta" id="search-meta">Showing 6 projects</p>
 
@@ -414,8 +536,7 @@
 
     <h2>🚀 Projects <span class="count" id="visible-count"></span></h2>
     <div class="grid" id="grid">
-
-      <a href="https://github.com/echocc00/SecSight" class="card" data-tags="security ai soxar soc secops" data-name="SecSight" data-keywords="wazuh suricata shuffle opensearch fastapi vite ai langgraph">
+      <a href="https://github.com/echocc00/SecSight" class="card" data-tags="security ai soxar soc secops" data-name="SecSight" data-keywords="wazuh suricata shuffle opensearch fastapi vite ai langgraph" data-created="2026-08-21">
         <div class="card-header">
           <span class="card-tag tag-security">SECURITY · SOC</span>
           <span class="card-stars">⭐ <span class="stars">0</span></span>
@@ -428,7 +549,7 @@
         </div>
       </a>
 
-      <a href="https://github.com/echocc00/SecOpent" class="card" data-tags="security pentest ai agent" data-name="SecOpent" data-keywords="pentest redteam fastapi react opensearch case studio">
+      <a href="https://github.com/echocc00/SecOpent" class="card" data-tags="security pentest ai agent" data-name="SecOpent" data-keywords="pentest redteam fastapi react opensearch case studio" data-created="2026-07-31">
         <div class="card-header">
           <span class="card-tag tag-security">SECURITY · PENTEST</span>
           <span class="card-stars">⭐ <span class="stars">0</span></span>
@@ -441,7 +562,7 @@
         </div>
       </a>
 
-      <a href="https://github.com/echocc00/VidSlice" class="card" data-tags="security ai video signature" data-name="VidSlice opencut-materials" data-keywords="video materials lancedb ed25519 fastapi python signing">
+      <a href="https://github.com/echocc00/VidSlice" class="card" data-tags="security ai video signature" data-name="VidSlice opencut-materials" data-keywords="video materials lancedb ed25519 fastapi python signing" data-created="2026-07-22">
         <div class="card-header">
           <span class="card-tag tag-security">SECURITY · SIGNING</span>
           <span class="card-stars">⭐ <span class="stars">0</span></span>
@@ -454,7 +575,7 @@
         </div>
       </a>
 
-      <a href="https://github.com/echocc00/NetSage" class="card" data-tags="network ai multi-vendor agent" data-name="NetSage" data-keywords="network napalm netbox nautobot containerlab batfish cisco huawei h3c arista">
+      <a href="https://github.com/echocc00/NetSage" class="card" data-tags="network ai multi-vendor agent" data-name="NetSage" data-keywords="network napalm netbox nautobot containerlab batfish cisco huawei h3c arista" data-created="2026-08-21">
         <div class="card-header">
           <span class="card-tag tag-network">NETWORK · AI</span>
           <span class="card-stars">⭐ <span class="stars">0</span></span>
@@ -467,7 +588,7 @@
         </div>
       </a>
 
-      <a href="https://github.com/echocc00/opencut002" class="card" data-tags="content video ai tts" data-name="opencut002 opencut" data-keywords="video shortvideo tts remotion python ai multistage">
+      <a href="https://github.com/echocc00/opencut002" class="card" data-tags="content video ai tts" data-name="opencut002 opencut" data-keywords="video shortvideo tts remotion python ai multistage" data-created="2026-07-12">
         <div class="card-header">
           <span class="card-tag tag-content">CONTENT · AI</span>
           <span class="card-stars">⭐ <span class="stars">0</span></span>
@@ -480,7 +601,7 @@
         </div>
       </a>
 
-      <a href="https://github.com/echocc00/hydro-fork" class="card" data-tags="fork typescript" data-name="hydro-fork hydro" data-keywords="oj online judge typescript hydro dev info science">
+      <a href="https://github.com/echocc00/hydro-fork" class="card" data-tags="fork typescript" data-name="hydro-fork hydro" data-keywords="oj online judge typescript hydro dev info science" data-created="2026-05-19">
         <div class="card-header">
           <span class="card-tag tag-fork">FORK</span>
           <span class="card-stars">⭐ <span class="stars">0</span></span>
@@ -492,7 +613,60 @@
           <span>fork</span><span>AGPL-3.0</span>
         </div>
       </a>
+    </div>
 
+    <h2>📅 Timeline</h2>
+    <div class="timeline" id="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2026-08-23</div>
+        <div class="timeline-title"><a href="https://github.com/echocc00/awesome-echocc00">awesome-echocc00</a> created</div>
+        <div class="timeline-desc">Portfolio & project index · GitHub Pages PWA</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-08-21</div>
+        <div class="timeline-title"><a href="https://github.com/echocc00/SecSight">SecSight</a> & <a href="https://github.com/echocc00/NetSage">NetSage</a> created</div>
+        <div class="timeline-desc">AI Security & Network platforms launched on the same day</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-08-21</div>
+        <div class="timeline-title"><a href="https://github.com/echocc00/SecSight/releases/tag/v0.5.1">SecSight v0.5.1</a> · License compliance</div>
+        <div class="timeline-desc">Apache-2.0 LICENSE + commercial licensing notice</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-08-23</div>
+        <div class="timeline-title"><a href="https://github.com/echocc00/js001">js001</a> → <a href="https://github.com/echocc00/hydro-fork">hydro-fork</a> renamed</div>
+        <div class="timeline-desc">301 permanent redirect · fork identity clarified</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-07-31</div>
+        <div class="timeline-title"><a href="https://github.com/echocc00/SecOpent">SecOpent</a> created</div>
+        <div class="timeline-desc">Authorized pentest workbench · M0–M3 milestones</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-07-22</div>
+        <div class="timeline-title"><a href="https://github.com/echocc00/VidSlice">VidSlice (opencut-materials)</a> created</div>
+        <div class="timeline-desc">Material vector indexing with Ed25519 signing</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-07-12</div>
+        <div class="timeline-title"><a href="https://github.com/echocc00/opencut002">opencut002</a> created</div>
+        <div class="timeline-desc">OpenCut v3 · AI short-video platform</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-05-19</div>
+        <div class="timeline-title"><a href="https://github.com/echocc00/hydro-fork">hydro-fork</a> created</div>
+        <div class="timeline-desc">Fork of hydro-dev/Hydro · AGPL-3.0</div>
+      </div>
+    </div>
+
+    <h2>📰 Recent Activity</h2>
+    <div class="activity" id="activity">
+      <div class="activity-item">
+        <div class="activity-icon">⏳</div>
+        <div class="activity-content">
+          <span style="color:var(--muted)">Loading recent activity from GitHub...</span>
+        </div>
+      </div>
     </div>
 
     <h2>📸 Preview Gallery</h2>
@@ -527,6 +701,9 @@
     </div>
   </div>
 
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
   <script>
     // ===========================================
     // Service Worker
@@ -540,7 +717,7 @@
     }
 
     // ===========================================
-    // PWA Install Prompt (beforeinstallprompt)
+    // PWA Install Prompt
     // ===========================================
     let deferredPrompt = null;
     const installPrompt = document.getElementById('install-prompt');
@@ -548,18 +725,14 @@
     const installDismiss = document.getElementById('install-dismiss');
 
     window.addEventListener('beforeinstallprompt', (e) => {
-      // Don't auto-show — wait for user dismissal/click
       e.preventDefault();
       deferredPrompt = e;
-      // Show after 10 seconds OR on second visit
       const dismissed = localStorage.getItem('install-dismissed') === '1';
       const visitCount = parseInt(localStorage.getItem('visit-count') || '0', 10);
       localStorage.setItem('visit-count', String(visitCount + 1));
 
       if (!dismissed && visitCount >= 1) {
-        setTimeout(() => {
-          installPrompt.classList.add('visible');
-        }, 10000);
+        setTimeout(() => installPrompt.classList.add('visible'), 10000);
       }
     });
 
@@ -577,14 +750,59 @@
       localStorage.setItem('install-dismissed', '1');
     });
 
-    // Detect installed state
     window.addEventListener('appinstalled', () => {
       installPrompt.classList.remove('visible');
       console.log('[PWA] App installed');
     });
 
     // ===========================================
-    // Client-side fuzzy project search + filter
+    // Toast helper
+    // ===========================================
+    function showToast(message, duration = 3000) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), duration);
+    }
+
+    // ===========================================
+    // Export README button
+    // Fetches README.md and triggers download
+    // ===========================================
+    document.getElementById('download-readme')?.addEventListener('click', async () => {
+      const btn = document.getElementById('download-readme');
+      btn.disabled = true;
+      btn.textContent = '⏳ Downloading...';
+
+      try {
+        const res = await fetch('README.md');
+        if (!res.ok) throw new Error('Fetch failed');
+        const text = await res.text();
+
+        // Create blob with timestamp in filename
+        const blob = new Blob([text], { type: 'text/markdown;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        const stamp = new Date().toISOString().split('T')[0];
+        a.href = url;
+        a.download = `awesome-echocc00-${stamp}.md`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        showToast('✅ README exported');
+      } catch (err) {
+        console.error(err);
+        showToast('❌ Download failed — try again');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '📥 Export README';
+      }
+    });
+
+    // ===========================================
+    // Client-side fuzzy search + filter
     // ===========================================
     const search = document.getElementById('search');
     const cards = document.querySelectorAll('.card');
@@ -595,35 +813,20 @@
     let currentFilter = 'all';
     let currentQuery = '';
 
-    /**
-     * Fuzzy match using simple subsequence scoring.
-     * Returns a score 0-100, higher = better match.
-     * Score 0 means no match.
-     */
     function fuzzyScore(query, text) {
-      if (!query) return 1; // empty query = match all
+      if (!query) return 1;
       query = query.toLowerCase();
       text = text.toLowerCase();
-
-      // Exact substring match = highest score
       if (text.includes(query)) return 100 - text.indexOf(query);
-
-      // Subsequence match (each char in query appears in order in text)
-      let qi = 0;
-      let score = 0;
-      let consecutive = 0;
+      let qi = 0, score = 0, consecutive = 0;
       for (let ti = 0; ti < text.length && qi < query.length; ti++) {
         if (text[ti] === query[qi]) {
           score += 1 + consecutive;
           consecutive++;
           qi++;
-        } else {
-          consecutive = 0;
-        }
+        } else { consecutive = 0; }
       }
-      if (qi < query.length) return 0; // not all chars matched
-
-      // Normalize by query length and text length
+      if (qi < query.length) return 0;
       return Math.max(1, Math.round((score / query.length) * 10 - text.length / 100));
     }
 
@@ -634,26 +837,14 @@
         const name = (card.dataset.name || '');
         const keywords = (card.dataset.keywords || '');
         const desc = (card.querySelector('.card-desc')?.textContent || '');
-
-        // Combined searchable text
         const haystack = `${tags} ${name} ${keywords} ${desc}`;
-
-        // Filter pill match
         const filterMatch = currentFilter === 'all' || tags.toLowerCase().includes(currentFilter);
-
-        // Fuzzy search score (must be > 0 to match)
         const score = fuzzyScore(currentQuery, haystack);
-
-        // Show if both match
         if (filterMatch && score > 0) {
           card.classList.remove('hidden');
-          // Display match score for debugging
           const scoreEl = card.querySelector('.match-score');
-          if (scoreEl && currentQuery) {
-            scoreEl.textContent = `(${score})`;
-          } else if (scoreEl) {
-            scoreEl.textContent = '';
-          }
+          if (scoreEl && currentQuery) scoreEl.textContent = `(${score})`;
+          else if (scoreEl) scoreEl.textContent = '';
           visible++;
         } else {
           card.classList.add('hidden');
@@ -680,24 +871,21 @@
     });
 
     // ===========================================
-    // Fetch GitHub stars asynchronously
+    // GitHub stars + activity feed
     // ===========================================
+    const REPOS = ['SecSight', 'SecOpent', 'VidSlice', 'NetSage', 'opencut002', 'hydro-fork', 'awesome-echocc00'];
+
     async function loadStars() {
-      const repos = [
-        'SecSight', 'SecOpent', 'VidSlice', 'NetSage',
-        'opencut002', 'hydro-fork', 'awesome-echocc00',
-      ];
       const starMap = {};
-      await Promise.all(repos.map(async name => {
+      await Promise.all(REPOS.map(async name => {
         try {
           const res = await fetch(`https://api.github.com/repos/echocc00/${name}`);
           if (res.ok) {
             const data = await res.json();
             starMap[name] = data.stargazers_count ?? 0;
           }
-        } catch (e) { /* offline / rate-limit */ }
+        } catch (e) {}
       }));
-
       document.querySelectorAll('.card').forEach(card => {
         const repoName = card.dataset.name.split(' ')[0];
         const star = starMap[repoName];
@@ -708,9 +896,72 @@
       });
     }
 
-    loadStars().catch(() => {});
+    function timeAgo(iso) {
+      const diff = (Date.now() - new Date(iso).getTime()) / 1000;
+      if (diff < 60) return 'just now';
+      if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+      if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+      if (diff < 604800) return `${Math.floor(diff / 86400)}d ago`;
+      return new Date(iso).toISOString().split('T')[0];
+    }
 
-    // Initial filter
+    async function loadActivity() {
+      const container = document.getElementById('activity');
+      try {
+        const res = await fetch('https://api.github.com/users/echocc00/events/public?per_page=10');
+        if (!res.ok) throw new Error('API failed');
+        const events = await res.json();
+
+        if (!events.length) {
+          container.innerHTML = '<div class="activity-item"><div class="activity-content" style="color:var(--muted)">No recent activity</div></div>';
+          return;
+        }
+
+        container.innerHTML = events.slice(0, 8).map(e => {
+          const typeIcons = {
+            PushEvent: '📝',
+            CreateEvent: '✨',
+            DeleteEvent: '🗑️',
+            PullRequestEvent: '🔀',
+            IssuesEvent: '📋',
+            ReleaseEvent: '🏷️',
+            ForkEvent: '🍴',
+            WatchEvent: '⭐',
+          };
+          const icon = typeIcons[e.type] || '•';
+          const repoName = e.repo?.name?.split('/')[1] || 'unknown';
+          let desc = '';
+          if (e.type === 'PushEvent') {
+            const commits = e.payload?.commits?.length || 0;
+            const lastMsg = e.payload?.commits?.[0]?.message?.split('\n')[0] || '';
+            desc = `pushed ${commits} commit${commits !== 1 ? 's' : ''} to <a href="https://github.com/${e.repo.name}">${repoName}</a>: <em>${lastMsg.slice(0, 60)}</em>`;
+          } else if (e.type === 'CreateEvent') {
+            desc = `created ${e.payload?.ref_type || 'ref'} in <a href="https://github.com/${e.repo.name}">${repoName}</a>`;
+          } else if (e.type === 'PullRequestEvent') {
+            desc = `${e.payload?.action} PR in <a href="https://github.com/${e.repo.name}">${repoName}</a>: ${e.payload?.pull_request?.title?.slice(0, 60) || ''}`;
+          } else if (e.type === 'ReleaseEvent') {
+            desc = `released <strong>${e.payload?.release?.tag_name || '?'}</strong> in <a href="https://github.com/${e.repo.name}">${repoName}</a>`;
+          } else {
+            desc = `${e.type} in <a href="https://github.com/${e.repo.name}">${repoName}</a>`;
+          }
+          return `
+            <div class="activity-item">
+              <div class="activity-icon">${icon}</div>
+              <div class="activity-content">
+                ${desc}
+                <div class="activity-time">${timeAgo(e.created_at)}</div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (e) {
+        container.innerHTML = '<div class="activity-item"><div class="activity-content" style="color:var(--muted)">⚠️ Could not load activity (rate-limited or offline). <a href="https://github.com/echocc00">View on GitHub →</a></div></div>';
+      }
+    }
+
+    loadStars().catch(() => {});
+    loadActivity().catch(() => {});
+
     applyFilters();
   </script>
 </body>
