@@ -68,7 +68,7 @@
 
 ## 📚 Forks & Studies
 
-### [js001](https://github.com/echocc00/js001) — Hydro OJ 二次开发
+### [hydro-fork](https://github.com/echocc00/hydro-fork) — Hydro OJ 二次开发
 
 > [hydro-dev/Hydro](https://github.com/hydro-dev/Hydro) 的镜像 / 二次开发分支
 
