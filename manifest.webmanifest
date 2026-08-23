@@ -1,0 +1,18 @@
+{
+  "name": "echocc00 · Project Portfolio",
+  "short_name": "echocc00",
+  "description": "Portfolio & project index for @echocc00 — Cloud Security, Network Engineering, AI-Driven SecOps",
+  "start_url": "/awesome-echocc00/",
+  "scope": "/awesome-echocc00/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "https://avatars.githubusercontent.com/u/286043314?v=4",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
