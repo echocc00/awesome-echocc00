@@ -4,12 +4,17 @@ description: Portfolio & project index for @echocc00 — Cloud Security, Network
 
 theme: minima
 
-# Exclude from Jekyll processing
+# Exclude from Jekyll processing (won't be in output site)
 exclude:
   - SECURITY.md
   - CODEOWNERS
   - LICENSE
   - release-drafter.yml
   - .github/
+
+# Include files that would otherwise be excluded (e.g., PWA assets)
+include:
   - sw.js
   - manifest.webmanifest
+
+show_downloads: false
