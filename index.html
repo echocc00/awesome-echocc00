@@ -38,7 +38,7 @@
     .container { max-width: 1200px; margin: 0 auto; }
 
     /* Header */
-    header { text-align: center; margin-bottom: 2rem; }
+    header { text-align: center; margin-bottom: 1.5rem; }
     .pulse {
       width: 14px; height: 14px;
       background: var(--cyan);
@@ -58,7 +58,6 @@
       -webkit-text-fill-color: transparent;
     }
     .subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 1rem; }
-    .links { margin-top: 0.5rem; }
     .links a {
       color: var(--cyan);
       text-decoration: none;
@@ -67,22 +66,56 @@
     }
     .links a:hover { text-decoration: underline; }
 
-    /* GitHub Stats */
-    .stats {
+    /* Stats - github-readme-stats */
+    .stats-readme {
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      margin: 1.5rem auto;
+      gap: 0.5rem;
+    }
+    .stats-readme img {
+      width: 100%;
+      height: auto;
+    }
+    .stats-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.5rem;
-      margin: 1.5rem 0 2rem;
+      margin-bottom: 1.5rem;
     }
-    .stats img {
-      height: 20px;
+    .stats-row img { height: 20px; }
+
+    /* Contribution graph */
+    .contrib {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .contrib h3 {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+    .contrib img {
+      max-width: 100%;
+      height: auto;
+    }
+    .contrib-caption {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
     }
 
     /* Search */
     .search-wrap {
       max-width: 600px;
-      margin: 0 auto 2rem;
+      margin: 0 auto 1rem;
       position: relative;
     }
     .search {
@@ -118,7 +151,7 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
     .pill {
       padding: 0.375rem 0.875rem;
@@ -232,14 +265,12 @@
       border-radius: 3px;
       color: var(--cyan);
     }
-
-    /* Empty state */
-    .empty {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: var(--muted);
+    .match-score {
+      font-size: 0.75rem;
+      color: var(--emerald);
+      float: right;
+      font-family: monospace;
     }
-    .empty-icon { font-size: 2rem; margin-bottom: 0.5rem; }
 
     /* Preview gallery */
     .preview {
@@ -271,6 +302,54 @@
       font-size: 0.75rem;
     }
 
+    /* Install prompt */
+    .install-prompt {
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--surface);
+      border: 1px solid var(--cyan);
+      border-radius: 8px;
+      padding: 1rem;
+      max-width: 90%;
+      width: 400px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      display: none;
+    }
+    .install-prompt.visible { display: block; }
+    .install-prompt h4 {
+      font-size: 0.9375rem;
+      margin-bottom: 0.5rem;
+      color: var(--cyan);
+    }
+    .install-prompt p {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .install-prompt-actions {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: flex-end;
+    }
+    .install-prompt button {
+      padding: 0.375rem 0.875rem;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8125rem;
+    }
+    .install-prompt button.primary {
+      background: var(--cyan);
+      color: var(--bg);
+      border-color: var(--cyan);
+      font-weight: 600;
+    }
+
     footer {
       text-align: center;
       margin-top: 2rem;
@@ -292,19 +371,34 @@
         <a href="https://github.com/echocc00">GitHub</a> ·
         <a href="README.md">README</a>
       </div>
-      <div class="stats">
-        <img alt="GitHub stars" src="https://img.shields.io/github/stars/echocc00/awesome-echocc00?style=flat-square">
+
+      <div class="stats-row">
+        <img alt="GitHub stars" src="https://img.shields.io/github/stars/echocc00/awesome-echocc00?style=flat-square&label=portfolio%20stars">
         <img alt="GitHub followers" src="https://img.shields.io/github/followers/echocc00?style=flat-square">
-        <img alt="Public repos" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Fusers%2Fechocc00&query=%24.public_repos&style=flat-square&label=repos&color=22d3ee">
         <img alt="Last commit" src="https://img.shields.io/github/last-commit/echocc00/awesome-echocc00?style=flat-square">
       </div>
+
+      <div class="stats-readme">
+        <img alt="GitHub Stats"
+             src="https://github-readme-stats.vercel.app/api?username=echocc00&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=false&bg_color=0d1117&title_color=22d3ee&text_color=e2e8f0&icon_color=22d3ee"
+             loading="lazy">
+      </div>
     </header>
+
+    <!-- Contribution graph -->
+    <div class="contrib">
+      <h3>Contribution Activity (last 12 months)</h3>
+      <img alt="Contribution graph"
+           src="https://ghchart.blue/shots/Recent%20GitHub%20Activity/echocc00"
+           loading="lazy">
+      <p class="contrib-caption">Auto-generated from GitHub activity · Refreshed on page load</p>
+    </div>
 
     <div class="search-wrap">
       <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
       </svg>
-      <input type="search" class="search" id="search" placeholder="Search projects by name, tag, or keyword...">
+      <input type="search" class="search" id="search" placeholder="Search projects (fuzzy match: type 'sec' → security projects, 'video' → content)...">
     </div>
     <p class="search-meta" id="search-meta">Showing 6 projects</p>
 
@@ -324,7 +418,7 @@
           <span class="card-tag tag-security">SECURITY · SOC</span>
           <span class="card-stars">⭐ <span class="stars">0</span></span>
         </div>
-        <div class="card-title">SecSight</div>
+        <div class="card-title">SecSight <span class="match-score"></span></div>
         <div class="card-desc">AI 驱动的安全运维平台 · SOC Copilot + SOAR 自动处置 · 集成 Wazuh / Suricata / Shuffle / OpenCTI</div>
         <div class="card-why"><strong>用我:</strong>中小企业(≤500 资产)需要全流程 SOC 但缺人 · Wazuh/SIEM 堆叠但没剧本 · 要国产 LLM + 等保合规</div>
         <div class="card-meta">
@@ -337,7 +431,7 @@
           <span class="card-tag tag-security">SECURITY · PENTEST</span>
           <span class="card-stars">⭐ <span class="stars">0</span></span>
         </div>
-        <div class="card-title">SecOpent</div>
+        <div class="card-title">SecOpent <span class="match-score"></span></div>
         <div class="card-desc">Catalog-driven 授权渗透测试工作台 · FastAPI + React Case Studio · LLM 只提议,确定性层 + 人类决策</div>
         <div class="card-why"><strong>用我:</strong>需要 catalog 化、签名 release、YAML case DSL 的合规渗透测试 · LLM 不能裸发命令的工程化场景</div>
         <div class="card-meta">
@@ -350,7 +444,7 @@
           <span class="card-tag tag-security">SECURITY · SIGNING</span>
           <span class="card-stars">⭐ <span class="stars">0</span></span>
         </div>
-        <div class="card-title">VidSlice · opencut-materials</div>
+        <div class="card-title">VidSlice · opencut-materials <span class="match-score"></span></div>
         <div class="card-desc">第三方素材向量索引 + Ed25519 签名 + HTTP API · LanceDB 存储 · 3 帧提取</div>
         <div class="card-why"><strong>用我:</strong>需要外包素材处理但要保证不被篡改 · 多人协作的视频流水线 · 想给第三方安全 sandbox</div>
         <div class="card-meta">
@@ -363,7 +457,7 @@
           <span class="card-tag tag-network">NETWORK · AI</span>
           <span class="card-stars">⭐ <span class="stars">0</span></span>
         </div>
-        <div class="card-title">NetSage</div>
+        <div class="card-title">NetSage <span class="match-score"></span></div>
         <div class="card-desc">AI 网络工程师平台 · 8 Agent + 三道闸(仿真/校验/审批) + 多厂商(华为/思科/H3C/Juniper/Arista)</div>
         <div class="card-why"><strong>用我:</strong>多厂商网络自动化 · 需要变更前快照+回滚 · 三权分立 RBAC · 30 条 CIS 基线合规检查</div>
         <div class="card-meta">
@@ -376,7 +470,7 @@
           <span class="card-tag tag-content">CONTENT · AI</span>
           <span class="card-stars">⭐ <span class="stars">0</span></span>
         </div>
-        <div class="card-title">OpenCut v3</div>
+        <div class="card-title">OpenCut v3 <span class="match-score"></span></div>
         <div class="card-desc">AI 多领域短视频生产平台 · 20 阶段管道 · TTS + Remotion 渲染 · CLI + SaaS 双轨</div>
         <div class="card-why"><strong>用我:</strong>需要批量生成教育/旅行/知识付费类短视频 · 想用 AI 自动选材+剪辑 · 国产 LLM 适配</div>
         <div class="card-meta">
@@ -389,7 +483,7 @@
           <span class="card-tag tag-fork">FORK</span>
           <span class="card-stars">⭐ <span class="stars">0</span></span>
         </div>
-        <div class="card-title">hydro-fork</div>
+        <div class="card-title">hydro-fork <span class="match-score"></span></div>
         <div class="card-desc">[hydro-dev/Hydro](https://github.com/hydro-dev/Hydro) 的镜像 / 二次开发分支 · 信息学在线评测系统</div>
         <div class="card-why"><strong>用我:</strong>需要 OJ 平台 · TypeScript · 想本地化/定制 Hydro · 注意:AGPL-3.0(copyleft 传染)</div>
         <div class="card-meta">
@@ -421,6 +515,16 @@
     </footer>
   </div>
 
+  <!-- PWA Install Prompt -->
+  <div class="install-prompt" id="install-prompt" role="dialog" aria-label="Install app">
+    <h4>📲 安装 echocc00 Portfolio</h4>
+    <p>添加为应用 · 离线访问 · 启动更快</p>
+    <div class="install-prompt-actions">
+      <button id="install-dismiss">稍后</button>
+      <button id="install-confirm" class="primary">安装</button>
+    </div>
+  </div>
+
   <script>
     // ===========================================
     // Service Worker
@@ -434,7 +538,51 @@
     }
 
     // ===========================================
-    // Client-side project search + filter
+    // PWA Install Prompt (beforeinstallprompt)
+    // ===========================================
+    let deferredPrompt = null;
+    const installPrompt = document.getElementById('install-prompt');
+    const installConfirm = document.getElementById('install-confirm');
+    const installDismiss = document.getElementById('install-dismiss');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Don't auto-show — wait for user dismissal/click
+      e.preventDefault();
+      deferredPrompt = e;
+      // Show after 10 seconds OR on second visit
+      const dismissed = localStorage.getItem('install-dismissed') === '1';
+      const visitCount = parseInt(localStorage.getItem('visit-count') || '0', 10);
+      localStorage.setItem('visit-count', String(visitCount + 1));
+
+      if (!dismissed && visitCount >= 1) {
+        setTimeout(() => {
+          installPrompt.classList.add('visible');
+        }, 10000);
+      }
+    });
+
+    installConfirm?.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      installPrompt.classList.remove('visible');
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log('[PWA] Install outcome:', outcome);
+      deferredPrompt = null;
+    });
+
+    installDismiss?.addEventListener('click', () => {
+      installPrompt.classList.remove('visible');
+      localStorage.setItem('install-dismissed', '1');
+    });
+
+    // Detect installed state
+    window.addEventListener('appinstalled', () => {
+      installPrompt.classList.remove('visible');
+      console.log('[PWA] App installed');
+    });
+
+    // ===========================================
+    // Client-side fuzzy project search + filter
     // ===========================================
     const search = document.getElementById('search');
     const cards = document.querySelectorAll('.card');
@@ -445,26 +593,70 @@
     let currentFilter = 'all';
     let currentQuery = '';
 
+    /**
+     * Fuzzy match using simple subsequence scoring.
+     * Returns a score 0-100, higher = better match.
+     * Score 0 means no match.
+     */
+    function fuzzyScore(query, text) {
+      if (!query) return 1; // empty query = match all
+      query = query.toLowerCase();
+      text = text.toLowerCase();
+
+      // Exact substring match = highest score
+      if (text.includes(query)) return 100 - text.indexOf(query);
+
+      // Subsequence match (each char in query appears in order in text)
+      let qi = 0;
+      let score = 0;
+      let consecutive = 0;
+      for (let ti = 0; ti < text.length && qi < query.length; ti++) {
+        if (text[ti] === query[qi]) {
+          score += 1 + consecutive;
+          consecutive++;
+          qi++;
+        } else {
+          consecutive = 0;
+        }
+      }
+      if (qi < query.length) return 0; // not all chars matched
+
+      // Normalize by query length and text length
+      return Math.max(1, Math.round((score / query.length) * 10 - text.length / 100));
+    }
+
     function applyFilters() {
       let visible = 0;
       cards.forEach(card => {
-        const tags = (card.dataset.tags || '').toLowerCase();
-        const name = (card.dataset.name || '').toLowerCase();
-        const keywords = (card.dataset.keywords || '').toLowerCase();
-        const text = (card.textContent || '').toLowerCase();
+        const tags = (card.dataset.tags || '');
+        const name = (card.dataset.name || '');
+        const keywords = (card.dataset.keywords || '');
+        const desc = (card.querySelector('.card-desc')?.textContent || '');
 
-        const filterMatch = currentFilter === 'all' || tags.includes(currentFilter);
-        const queryMatch = !currentQuery ||
-                           name.includes(currentQuery) ||
-                           keywords.includes(currentQuery) ||
-                           tags.includes(currentQuery) ||
-                           text.includes(currentQuery);
+        // Combined searchable text
+        const haystack = `${tags} ${name} ${keywords} ${desc}`;
 
-        if (filterMatch && queryMatch) {
+        // Filter pill match
+        const filterMatch = currentFilter === 'all' || tags.toLowerCase().includes(currentFilter);
+
+        // Fuzzy search score (must be > 0 to match)
+        const score = fuzzyScore(currentQuery, haystack);
+
+        // Show if both match
+        if (filterMatch && score > 0) {
           card.classList.remove('hidden');
+          // Display match score for debugging
+          const scoreEl = card.querySelector('.match-score');
+          if (scoreEl && currentQuery) {
+            scoreEl.textContent = `(${score})`;
+          } else if (scoreEl) {
+            scoreEl.textContent = '';
+          }
           visible++;
         } else {
           card.classList.add('hidden');
+          const scoreEl = card.querySelector('.match-score');
+          if (scoreEl) scoreEl.textContent = '';
         }
       });
       meta.textContent = `Showing ${visible} project${visible !== 1 ? 's' : ''}`;
@@ -472,7 +664,7 @@
     }
 
     search.addEventListener('input', (e) => {
-      currentQuery = e.target.value.toLowerCase().trim();
+      currentQuery = e.target.value;
       applyFilters();
     });
 
@@ -504,9 +696,8 @@
         } catch (e) { /* offline / rate-limit */ }
       }));
 
-      // Update card stars
       document.querySelectorAll('.card').forEach(card => {
-        const repoName = card.dataset.name.split(' ')[0]; // "SecSight" or "opencut002"
+        const repoName = card.dataset.name.split(' ')[0];
         const star = starMap[repoName];
         if (star !== undefined) {
           const starEl = card.querySelector('.stars');
@@ -515,7 +706,6 @@
       });
     }
 
-    // Try to load stars (rate-limited: 60 req/hour for unauthenticated)
     loadStars().catch(() => {});
 
     // Initial filter
