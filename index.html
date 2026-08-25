@@ -766,6 +766,22 @@
     }
 
     // ===========================================
+    // Detect base path (custom domain vs GitHub Pages)
+    // ===========================================
+    // If running on www.echocco.com/, base is '/'
+    // If running on echocc00.github.io/awesome-echocc00/, base is '/awesome-echocc00/'
+    const BASE_PATH = (function() {
+      const host = window.location.host;
+      const path = window.location.pathname;
+      if (host.includes('echocco.com')) return '/';
+      // GitHub Pages path detection
+      const match = path.match(/^(\/[^/]+\/)/);
+      if (match) return match[1];
+      return '/';
+    })();
+    console.log('[PWA] Base path:', BASE_PATH);
+
+    // ===========================================
     // Network status detection + reload button
     // ===========================================
     const statusBar = document.getElementById('status-bar');
