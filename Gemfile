@@ -1,11 +1,14 @@
 source "https://rubygems.org"
 
-# Use Jekyll 3.x because the repo's _config.yml target minima theme syntax
-# was authored against the 3.x series (minima 2.5, jekyll-include-cache 0.x).
-# 4.x removed a few helpers we still need.
+# Jekyll 3.10 is pinned because the repo's _config.yml uses minima theme
+# syntax authored against the 3.x series.
 gem "jekyll", "~> 3.10.0"
-gem "tzinfo-data", platforms: [:windows, :jruby, :mingw, :mswin]
 
-# Bundle exec jekyll build: safe to keep minimal; no theme gem needed because
-# the site uses root index.html (self-contained) and explicitly sets
-# theme: null in _config.yml.
+# Ruby 3.4 stopped shipping base64 as a default gem. safe_yaml (a Jekyll 3.x
+# transitive dep) requires base64 at load time, so bundle exec jekyll build
+# fails with "cannot load such file -- base64" on Ruby 3.4. Declare it
+# explicitly so bundler resolves and links it.
+gem "base64"
+
+# tzinfo-data needs to be on platforms without a system tz database.
+gem "tzinfo-data", platforms: [:windows, :jruby, :mingw, :mswin]
