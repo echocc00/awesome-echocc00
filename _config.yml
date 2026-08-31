@@ -3,7 +3,9 @@
 title: echocc00 · Project Portfolio
 description: Portfolio & project index for @echocc00 — Cloud Security, Network Engineering, AI-Driven SecOps
 
-theme: minima
+theme: null  # Removed minima to fix CF Pages build (2026-08-31).
+          # index.html is fully self-contained and never relied on minima layout,
+          # so removing it doesn't change the rendered site — see commit message for evidence.
 
 # Exclude from Jekyll processing
 exclude:
