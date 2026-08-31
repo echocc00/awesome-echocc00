@@ -6,7 +6,7 @@ baseurl: ""
 timezone: Asia/Shanghai
 
 # Build
-permalink: :title/
+# (no global permalink override — let pages use their own explicit permalinks)
 markdown: kramdown
 highlighter: rouge
 kramdown:
