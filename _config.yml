@@ -1,24 +1,63 @@
-# Touched at 2026-08-26T18:35:00Z to retrigger Pages build / cert provisioning
-# Jekyll configuration for echocc00.github.io/awesome-echocc00
-title: echocc00 · Project Portfolio
-description: Portfolio & project index for @echocc00 — Cloud Security, Network Engineering, AI-Driven SecOps
+title: "echocc00 — Security & Network Engineering Portfolio"
+description: "AI-driven security infrastructure. Cloud security, network engineering, and AI-driven SecOps. Apache-2.0."
+author: echocc00
+url: ""
+baseurl: ""
+timezone: Asia/Shanghai
 
-theme: null  # Removed minima to fix CF Pages build (2026-08-31).
-          # index.html is fully self-contained and never relied on minima layout,
-          # so removing it doesn't change the rendered site — see commit message for evidence.
+# Build
+permalink: :title/
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
-# Exclude from Jekyll processing
+# Exclude Jekyll files from processing (CK tool we set up earlier).
 exclude:
   - SECURITY.md
   - CODEOWNERS
   - LICENSE
   - release-drafter.yml
   - .github/
+  - assets/
+  - node_modules/
+  - vendor/
+  - Gemfile.lock
+  - sw.js
+  - manifest.webmanifest
+  - icon.svg
 
-# Include non-standard files (PWA assets must be present as-is)
+# Treat non-standard files as-is (PWA assets must reach _site unchanged).
 include:
   - sw.js
   - manifest.webmanifest
   - icon.svg
 
 show_downloads: false
+
+# Use minima defaults we don't actually render, but keep theme:null so
+# Jekyll doesn't try to mount minima's layouts on top of our root index.html.
+theme: null
+
+# Defaults applied to every page via the `default` frontmatter merge.
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+  - scope:
+      path: "projects"
+      type: pages
+    values:
+      layout: default
+
+# Collections: project detail pages render under /projects/<slug>/
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+sass:
+  quiet_deps: true

@@ -1,0 +1,16 @@
+<a class="project-card" href="{{ '/projects/' | append: include.project.slug | append: '/' | relative_url }}">
+  <div class="project-cover" style="background: {{ include.project.cover.gradient }};">
+    <span>{{ include.project.cover.icon }}</span>
+  </div>
+  <div class="project-body">
+    <div class="project-tag-row">
+      <span class="project-tag">{{ include.project.version }}</span>
+      <span class="dot"></span>
+      <span class="project-tag">{{ include.project.category }}</span>
+    </div>
+    <h3 class="project-title">{{ include.project.name }}</h3>
+    <div class="project-tagline">{{ include.project.tagline }}</div>
+    <p class="project-desc">{{ include.project.short_desc }}</p>
+    <span class="project-link">View project <span class="arrow">→</span></span>
+  </div>
+</a>

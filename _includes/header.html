@@ -1,0 +1,19 @@
+<nav class="nav">
+  <div class="shell nav-inner">
+    <a class="nav-brand" href="{{ '/' | relative_url }}">
+      echocc00<span>/portfolio</span>
+    </a>
+    <div class="nav-menu">
+      <a class="nav-link {% if page.url == '/projects/' or page.layout == 'project' %}active{% endif %}"
+         href="{{ '/projects/' | relative_url }}">Projects</a>
+      <a class="nav-link {% if page.url == '/about/' %}active{% endif %}"
+         href="{{ '/about/' | relative_url }}">About</a>
+      <a class="nav-cta" href="https://github.com/{{ site.author }}" rel="noopener" target="_blank">
+        GitHub ↗
+      </a>
+    </div>
+    <a class="nav-mobile" href="https://github.com/{{ site.author }}" rel="noopener" target="_blank" aria-label="GitHub">
+      <span></span>
+    </a>
+  </div>
+</nav>

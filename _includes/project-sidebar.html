@@ -1,0 +1,46 @@
+{%- assign p = include.project -%}
+<div class="side-block">
+  <div class="side-title">At a glance</div>
+  <dl>
+    {%- if p.version %}<dt>Version</dt><dd>{{ p.version }}</dd>{%- endif %}
+    {%- if p.license %}<dt>License</dt><dd>{{ p.license }}</dd>{%- endif %}
+    {%- if p.category %}<dt>Category</dt><dd>{{ p.category | capitalize }}</dd>{%- endif %}
+    {%- if p.repo %}<dt>Source</dt><dd><a href="https://github.com/{{ p.repo }}" rel="noopener" target="_blank">{{ p.repo }} ↗</a></dd>{%- endif %}
+  </dl>
+</div>
+
+{%- if p.tech_stack and p.tech_stack.size > 0 %}
+<div class="side-block">
+  <div class="side-title">Tech stack</div>
+  <div class="side-list">
+    {%- for t in p.tech_stack -%}
+      <span class="pill">{{ t.lang }}{%- if t.role %} · {{ t.role }}{%- endif %}</span>
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif %}
+
+{%- if p.integrations and p.integrations.size > 0 %}
+<div class="side-block">
+  <div class="side-title">Integrations</div>
+  <div class="side-list">
+    {%- for it in p.integrations -%}
+      <span class="pill">{{ it }}</span>
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif %}
+
+{%- if p.metrics and p.metrics.size > 0 %}
+<div class="side-block">
+  <div class="side-title">By the numbers</div>
+  <div class="metric-list">
+    {%- for m in p.metrics -%}
+      <div class="m">
+        <div class="m-label">·</div>
+        <div class="m-value">{{ m }}</div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif %}

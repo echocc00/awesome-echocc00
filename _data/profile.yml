@@ -1,0 +1,49 @@
+name: echocc00
+tagline_hero: |
+  Building AI-driven
+  security infrastructure.
+subline: Cloud Security · Network Engineering · AI-Driven SecOps
+bio_short: 9 years in cloud security & network engineering. CCIE. Building tools that operate in production environments — autonomously and auditably.
+contact_email: echocc00@users.noreply.github.com
+github: echocc00
+location: Shanghai, CN
+
+metrics:
+  - value: "9+"
+    label: "years in cloud security"
+  - value: "22"
+    label: "SOAR playbooks"
+  - value: "6"
+    label: "open-source products"
+  - value: "1,500+"
+    label: "tests across projects"
+
+stack_pills:
+  - LangGraph
+  - FastAPI
+  - React
+  - Antd
+  - Wazuh
+  - Suricata
+  - Containerlab
+  - Batfish
+  - NetBox
+  - Qdrant
+  - MCP
+  - LiteLLM
+
+focus_areas:
+  - title: "Cloud Security & SecOps"
+    desc: "Production-grade detection, automation, and AI-assisted operations."
+    icon: 🛡
+  - title: "Network Engineering & AI"
+    desc: "Multi-vendor config generation, simulation, and policy validation."
+    icon: 🌐
+  - title: "Content & Creative AI"
+    desc: "Short-form video pipelines and creative tooling research."
+    icon: 🎬
+
+footer:
+  license: "Apache-2.0"
+  blurb: "Built and maintained by @echocc00 · Shanghai · 2026"
+  business_contact: "See commercial licensing in each project's README."

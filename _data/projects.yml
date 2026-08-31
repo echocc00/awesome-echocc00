@@ -1,0 +1,203 @@
+# Project data — single source of truth.
+# Each entry below powers:
+#   - the project list page (/projects/)
+#   - the project detail page (/projects/<slug>/)
+#   - the homepage product card grid
+#
+# `slug` must match the markdown file name in `projects/<slug>.md`.
+
+projects:
+
+  - slug: secsight
+    name: SecSight
+    cover:
+      icon: 🛡
+      gradient: "linear-gradient(135deg, #1e3a8a 0%, #000 100%)"
+    tagline: "AI-driven SOC platform"
+    category: security
+    short_desc: "SecOps Copilot + auto-remediation SOAR engine for small-to-mid SOC teams."
+    metrics:
+      - "22 production playbooks"
+      - "5 autonomy levels"
+      - "234 tests · 87.8% coverage"
+    tech_stack:
+      - lang: Python
+        role: Core service
+      - lang: TypeScript
+        role: Console SPA
+      - lang: Rust
+        role: Process sandbox
+    integrations:
+      - Wazuh
+      - Suricata
+      - Shuffle
+      - OpenCTI
+      - DFIR-IRIS
+    version: v0.5.1
+    license: Apache-2.0
+    repo: echocc00/SecSight
+    has_detail_page: true
+    features:
+      - title: "AI SecOps Copilot"
+        desc: "Multi-agent SOC assistant over SIEM/ticket/KB."
+      - title: "Auto-remediation SOAR"
+        desc: "22 production playbooks across 5 autonomy levels."
+      - title: "Four-layer knowledge base"
+        desc: "Process-isolated; aligned with MLPS 2.0 (等保 2.0)."
+      - title: "MCP & LiteLLM"
+        desc: "Pluggable LLM backend, MCP tool bus, Qdrant RAG."
+
+  - slug: secopent
+    name: SecOpent
+    cover:
+      icon: 🔐
+      gradient: "linear-gradient(135deg, #7c2d12 0%, #0f172a 100%)"
+    tagline: "Authorized pentest workbench"
+    category: security
+    short_desc: "Catalog-driven, agent-native authorized pentest workbench."
+    metrics:
+      - "17 adapters"
+      - "CoverageMatrix"
+      - "YAML case DSL"
+    tech_stack:
+      - lang: Python
+        role: Backend
+      - lang: TypeScript
+        role: Case Studio UI
+    integrations: []
+    version: v1.1.1-stable
+    license: Apache-2.0
+    repo: echocc00/SecOpent
+    has_detail_page: true
+    features:
+      - title: "Catalog-driven"
+        desc: "YAML DSL for cases; deterministic + humans approve."
+      - title: "Multi-asset coverage"
+        desc: "web / network / cloud adapters with CoverageMatrix."
+      - title: "Three-layer evidence"
+        desc: "oracle N/N, seccomp sandbox, desensitized output."
+
+  - slug: vidslice
+    name: VidSlice
+    cover:
+      icon: 🎬
+      gradient: "linear-gradient(135deg, #6d28d9 0%, #1e1b4b 100%)"
+    tagline: "OpenCut materials · vector index"
+    category: content
+    short_desc: "Third-party material vector indexing + Ed25519 attestation."
+    metrics:
+      - "408 tests"
+      - "LanceDB storage"
+      - "3-frame extraction"
+    tech_stack:
+      - lang: Python
+        role: Indexer & HTTP API
+    integrations: []
+    version: v0.7.10
+    license: Apache-2.0
+    repo: echocc00/VidSlice
+    has_detail_page: true
+    features:
+      - title: "Vector index"
+        desc: "LanceDB over multi-frame embeddings."
+      - title: "Ed25519 attestation"
+        desc: "Signed material provenance at ingest."
+      - title: "NDJSON progress"
+        desc: "Parallel ingestion with streamable events."
+
+  - slug: netsage
+    name: NetSage
+    cover:
+      icon: 🌐
+      gradient: "linear-gradient(135deg, #047857 0%, #052e16 100%)"
+    tagline: "AI network engineer"
+    category: network
+    short_desc: "AI-driven design, config generation, troubleshooting, and audit."
+    metrics:
+      - "8 specialized agents"
+      - "30 baseline rules"
+      - "5-level RBAC"
+    tech_stack:
+      - lang: Python
+        role: Backend
+      - lang: TypeScript
+        role: Operator UI
+    integrations:
+      - Containerlab
+      - Batfish
+      - NetBox
+      - Nautobot
+      - Huawei VRP
+      - Cisco IOS-XE
+      - H3C
+      - Juniper
+      - Arista
+    version: v0.1.1
+    license: Apache-2.0
+    repo: echocc00/NetSage
+    has_detail_page: true
+    features:
+      - title: "Three-gate engine"
+        desc: "Containerlab simulation → Batfish validation → human approval + snapshot rollback."
+      - title: "Multi-vendor"
+        desc: "Huawei VRP / Cisco IOS-XE / H3C / Juniper / Arista."
+      - title: "Source of truth"
+        desc: "NetBox + Nautobot dual adapters."
+      - title: "Compliance audit"
+        desc: "30 baseline rules (CIS + vendor hardening) + ACL analysis."
+
+  - slug: opencut002
+    name: OpenCut v3
+    cover:
+      icon: ✂️
+      gradient: "linear-gradient(135deg, #c2410c 0%, #1c1917 100%)"
+    tagline: "Multi-domain short-video platform"
+    category: content
+    short_desc: "AI short-video production from still inputs to 1080x1920 vertical."
+    metrics:
+      - "20-stage pipeline"
+      - "4 domains"
+      - "CLI + SaaS"
+    tech_stack:
+      - lang: Python
+        role: Pipeline
+      - lang: TypeScript
+        role: SaaS UI
+    integrations: []
+    version: v0.6.5
+    license: Apache-2.0
+    repo: echocc00/opencut002
+    has_detail_page: true
+    features:
+      - title: "Domain presets"
+        desc: "education / travel / knowledge_paid / custom."
+      - title: "TTS + Remotion"
+        desc: "Speech, auto-subtitles, BGM matching."
+      - title: "Dual distribution"
+        desc: "CLI for batch; SaaS for one-off."
+
+  - slug: hydro-fork
+    name: Hydro OJ
+    cover:
+      icon: 📚
+      gradient: "linear-gradient(135deg, #2563eb 0%, #0c4a6e 100%)"
+    tagline: "Hydro fork · OI judge platform"
+    category: fork
+    short_desc: "Active fork of [hydro-dev/Hydro](https://github.com/hydro-dev/Hydro). TypeScript."
+    metrics:
+      - "OO long-running fork"
+      - "AGPL-3.0"
+      - "TypeScript"
+    tech_stack:
+      - lang: TypeScript
+        role: Whole codebase
+    integrations: []
+    version: "(mirror)"
+    license: AGPL-3.0
+    repo: echocc00/hydro-fork
+    has_detail_page: true
+    features:
+      - title: "Educational OJ"
+        desc: "Online judge for informatics olympiad training."
+      - title: "Upstream-tracking"
+        desc: "Mirrors upstream; ships our patches on top."

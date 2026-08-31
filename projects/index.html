@@ -1,0 +1,42 @@
+---
+permalink: /projects/
+layout: default
+title: Projects
+description: Six open-source products across cloud security, network engineering, and AI-driven content production.
+---
+
+<section class="hero" style="padding: 96px 0 64px;">
+  <div class="shell hero-inner">
+    <span class="hero-eyebrow">All Products</span>
+    <h1 class="hero-title" style="font-size: clamp(40px, 5vw, 72px);">{{ page.title }}</h1>
+    <p class="hero-sub">{{ page.description }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="proj-toolbar">
+      <input class="search-input"
+             type="search"
+             id="projSearch"
+             placeholder="Search by name, tagline, or stack…"
+             aria-label="Search projects">
+      <div class="chip-row" id="catChips">
+        <button class="chip active" data-cat="all">All <span id="count-all"></span></button>
+        <button class="chip" data-cat="security">Security <span id="count-security"></span></button>
+        <button class="chip" data-cat="network">Network <span id="count-network"></span></button>
+        <button class="chip" data-cat="content">Content <span id="count-content"></span></button>
+        <button class="chip" data-cat="fork">Forks <span id="count-fork"></span></button>
+      </div>
+    </div>
+    <div class="grid" id="projGrid">
+      {%- for p in site.data.projects.projects -%}
+        {%- include project-card.html project=p -%}
+      {%- endfor -%}
+    </div>
+    <div class="not-found" id="projEmpty" style="display:none;">
+      <h3>No projects matched.</h3>
+      <p>Try a different search term or category.</p>
+    </div>
+  </div>
+</section>
