@@ -20,7 +20,6 @@ exclude:
   - LICENSE
   - release-drafter.yml
   - .github/
-  - assets/
   - node_modules/
   - vendor/
   - Gemfile.lock
