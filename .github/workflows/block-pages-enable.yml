@@ -1,0 +1,31 @@
+name: block-pages-enable
+
+# Trigger on workflow_dispatch so echocc00 can manually re-enable Pages only
+# by running this workflow with explicit input. Auto-triggers on any change
+# that would re-enable Pages.
+
+on:
+  repository_dispatch:
+    types: [pages_enabled]
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Why are you enabling Pages? (CF must be disabled first.)"
+        required: true
+        type: string
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disable Pages if it got re-enabled
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          STATUS=$(gh api repos/${{ github.repository }}/pages --jq '.status' 2>/dev/null || echo "missing")
+          echo "Pages status: $STATUS"
+          if [ "$STATUS" != "missing" ]; then
+            echo "::warning::Pages was re-enabled — this repo's hosting lives on Cloudflare (www.echocco.com)."
+            echo "::warning::Disabling Pages to avoid split-serving and orphaned LetsEncrypt cert churn."
+            gh api -X DELETE repos/${{ github.repository }}/pages
+          fi
