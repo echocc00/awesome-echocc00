@@ -6,17 +6,35 @@ title: echocc00
 
 <section class="hero">
   <div class="shell hero-inner">
-    <span class="hero-eyebrow">AI · SecOps · Network Engineering · Apache-2.0</span>
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      <span>Open to interesting work · Open-source, freelance, or full-time security engineering</span>
+    </div>
     <h1 class="hero-title">
-      {{ site.data.profile.name | default: "echocc00" }}
+      Building AI-driven<br>
+      <span class="accent">security infrastructure</span><br>
+      that ships.
     </h1>
-    <p class="hero-sub">{{ site.data.profile.bio_short }}</p>
+    <p class="hero-tagline">
+      I'm <strong>{{ site.author }}</strong> — a security &amp; network engineer based in
+      Shanghai. 9 years in cloud security, CCIE-certified, currently operating
+      production AI-driven SOC and network automation tooling as open source.
+    </p>
+    <div class="hero-active">
+      <span class="active-label">Currently shipping</span>
+      <a class="active-chip" href="{{ '/projects/secsight/' | relative_url }}">
+        🛡 SecSight <span class="chip-ver">{{ site.data.projects.projects[0].version }}</span>
+      </a>
+      <a class="active-chip" href="{{ '/projects/netsage/' | relative_url }}">
+        🌐 NetSage <span class="chip-ver">{{ site.data.projects.projects[3].version }}</span>
+      </a>
+    </div>
     <div class="hero-cta">
       <a class="btn btn-primary" href="{{ '/projects/' | relative_url }}">
         See my work <span class="arrow">→</span>
       </a>
-      <a class="btn btn-ghost" href="https://github.com/{{ site.author }}" rel="noopener" target="_blank">
-        GitHub profile ↗
+      <a class="btn btn-ghost" href="mailto:{{ site.data.profile.contact_email }}">
+        Get in touch ↗
       </a>
     </div>
   </div>
