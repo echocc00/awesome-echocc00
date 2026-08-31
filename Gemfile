@@ -1,14 +1,24 @@
 source "https://rubygems.org"
 
-# Jekyll 3.10 is pinned because the repo's _config.yml uses minima theme
-# syntax authored against the 3.x series.
+# Use Jekyll 3.x because the repo's _config.yml uses minima theme
+# syntax authored against the 3.x series (minima 2.5).
 gem "jekyll", "~> 3.10.0"
-
-# Ruby 3.4 stopped shipping base64 as a default gem. safe_yaml (a Jekyll 3.x
-# transitive dep) requires base64 at load time, so bundle exec jekyll build
-# fails with "cannot load such file -- base64" on Ruby 3.4. Declare it
-# explicitly so bundler resolves and links it.
-gem "base64"
-
-# tzinfo-data needs to be on platforms without a system tz database.
 gem "tzinfo-data", platforms: [:windows, :jruby, :mingw, :mswin]
+
+# --- Ruby 3.4 stdlib availability shim ---
+# Ruby 3.4 promoted several former-default gems to "bundled" status,
+# which means Bundler's exec path requires them to be explicit deps even
+# though Jekyll 3.x / liquid 4 / safe_yaml transitively require them.
+# Reference: https://github.com/jekyll/jekyll/issues/9620
+gem "base64"
+gem "bigdecimal"
+gem "csv"
+gem "logger"
+gem "mutex_m"
+gem "drb"
+gem "stringio"
+gem "benchmark"
+gem "webrick"
+
+# No theme gem needed: the site uses root index.html (self-contained) and
+# explicitly sets theme: null in _config.yml.
