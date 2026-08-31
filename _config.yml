@@ -12,8 +12,6 @@ highlighter: rouge
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-
-# Exclude Jekyll files from processing (CK tool we set up earlier).
 exclude:
   - SECURITY.md
   - CODEOWNERS
@@ -34,10 +32,6 @@ include:
   - icon.svg
 
 show_downloads: false
-
-# Use minima defaults we don't actually render, but keep theme:null so
-# Jekyll doesn't try to mount minima's layouts on top of our root index.html.
-theme: null
 
 # Defaults applied to every page via the `default` frontmatter merge.
 defaults:
