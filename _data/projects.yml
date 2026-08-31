@@ -213,34 +213,88 @@ projects:
       - title: "Dual distribution"
         desc: "CLI for batch; SaaS for one-off."
 
-  - slug: hydro-fork
-    name: Hydro OJ
+  - slug: secopentagent
+    name: SecOpentAgent
     cover:
-      icon: 📚
-      gradient: "linear-gradient(135deg, #2563eb 0%, #0c4a6e 100%)"
-    tagline: "Hydro fork · OI judge platform"
-    category: fork
-    short_desc: "Active fork of [hydro-dev/Hydro](https://github.com/hydro-dev/Hydro). TypeScript."
+      icon: 🛰
+      gradient: "linear-gradient(135deg, #4f46e5 0%, #1e1b4b 100%)"
+    tagline: "Self-improving AI agent infrastructure"
+    category: security
+    short_desc: "Agent infrastructure for security operations: closed-loop learning, multi-platform gateway, scheduled automations."
     description: |
-      Hydro OJ is the de facto open-source judge platform for informatics olympiad
-      training in China. This repository is a long-running fork — we mirror upstream and
-      ship our own patches on top, primarily for performance work, deployment tooling,
-      and Chinese-language doc fixes. The codebase is TypeScript end-to-end and the
-      upstream license (AGPL-3.0) carries over to this fork.
+      Self-improving AI agent infrastructure with a closed learning loop — it
+      creates skills from experience, improves them during use, and persists
+      knowledge across sessions. Deployed behind a single gateway process
+      that fans out to Telegram, Discord, Slack, and CLI, with scheduled
+      automations handled natively. Designed for the same operational
+      problem SecSight tackles from the SOC side: small teams can't keep
+      heads down on the same surface forever, so the agent accumulates
+      context over weeks and gets sharper as it runs.
     metrics:
-      - "Long-running fork"
-      - "AGPL-3.0"
-      - "TypeScript"
+      - "Closed-loop learning"
+      - "7 runtime backends"
+      - "Multi-platform gateway"
     tech_stack:
-      - lang: TypeScript
-        role: Whole codebase
-    integrations: []
-    version: "(mirror)"
-    license: AGPL-3.0
-    repo: echocc00/hydro-fork
+      - lang: Python
+        role: Agent runtime
+      - lang: Shell
+        role: Install + tooling
+    integrations:
+      - LLM providers (any)
+      - Telegram / Discord / Slack / Signal
+      - Honcho user modeling
+    version: v0.x
+    license: MIT
+    repo: echocc00/SecOpentAgent
     has_detail_page: true
     features:
-      - title: "Educational OJ"
-        desc: "Online judge for informatics olympiad training."
-      - title: "Upstream-tracking"
-        desc: "Mirrors upstream; ships our patches on top."
+      - title: "Self-improving memory"
+        desc: "Agent-curated memory with periodic nudges and skill self-improvement."
+      - title: "Multi-platform gateway"
+        desc: "Single gateway process reaches Telegram, Discord, Slack, WhatsApp, Signal, CLI."
+      - title: "Scheduled automations"
+        desc: "Built-in cron — daily reports, nightly backups, weekly audits in natural language."
+      - title: "Serverless-friendly runtime"
+        desc: "7 backends including serverless persistence — hibernates when idle."
+
+  - slug: strixoc
+    name: StrixOC
+    cover:
+      icon: 🎯
+      gradient: "linear-gradient(135deg, #b91c1c 0%, #1c1917 100%)"
+    tagline: "Autonomous AI penetration testing"
+    category: security
+    short_desc: "AI penetration testing agents with real exploit validation, multi-agent orchestration."
+    description: |
+      Autonomous AI penetration testing agents that behave like real
+      attackers — they run code dynamically, find vulnerabilities, and
+      validate them through actual proofs-of-concept rather than the
+      false-positive-prone signals of legacy static analyzers. Multi-agent
+      orchestration lets a team of AI pentesters collaborate and scale.
+      Used internally as a reference implementation for SecOpent's
+      adapter path and as a fast-feedback channel for new case-DSL
+      primitives before they land in production.
+    metrics:
+      - "Real PoC validation"
+      - "Multi-agent orchestration"
+      - "Developer-first CLI"
+    tech_stack:
+      - lang: Python
+        role: Agent + toolkit
+      - lang: TypeScript
+        role: Web UI integrations
+    integrations:
+      - GitHub Actions / CI
+      - Open-source LLM providers
+      - strix.ai dashboard
+    version: v0.x
+    license: Apache-2.0
+    repo: echocc00/strixoc
+    has_detail_page: true
+    features:
+      - title: "Real exploit validation"
+        desc: "Working PoCs — not the false positives typical of static analyzers."
+      - title: "Multi-agent teams"
+        desc: "Pentesters that collaborate and scale the way real red teams do."
+      - title: "Auto-fix and reporting"
+        desc: "Generates patches and compliance-ready pentest reports."

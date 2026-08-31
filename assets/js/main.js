@@ -11,8 +11,7 @@
     'all':       document.getElementById('count-all'),
     'security':  document.getElementById('count-security'),
     'network':   document.getElementById('count-network'),
-    'content':   document.getElementById('count-content'),
-    'fork':      document.getElementById('count-fork')
+    'content':   document.getElementById('count-content')
   };
 
   // Build a normalized index per card for searching.
@@ -30,7 +29,7 @@
   });
 
   // Update category counts.
-  var initial = { all: 0, security: 0, network: 0, content: 0, fork: 0 };
+  var initial = { all: 0, security: 0, network: 0, content: 0 };
   index.forEach(function (i) {
     initial.all++;
     if (initial[i.category] !== undefined) initial[i.category]++;
