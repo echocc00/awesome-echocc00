@@ -16,6 +16,15 @@ projects:
     tagline: "AI-driven SOC platform"
     category: security
     short_desc: "SecOps Copilot + auto-remediation SOAR engine for small-to-mid SOC teams."
+    description: |
+      SecSight is an AI-driven security operations platform built for small-and-mid SOC teams
+      that don't have the headcount to staff a 24/7 detection and response function. It pairs
+      a multi-agent SecOps Copilot with an auto-remediation SOAR engine so routine incidents
+      — phishing triage, false-positive sweep, IOC enrichment — are handled automatically
+      under well-defined autonomy levels, while the complex ones land in a human review queue.
+      The system ships with a process-isolated deployment model and is aligned with MLPS 2.0
+      (等保 2.0) so it can be installed in regulated environments without architectural
+      rewrites.
     metrics:
       - "22 production playbooks"
       - "5 autonomy levels"
@@ -55,6 +64,13 @@ projects:
     tagline: "Authorized pentest workbench"
     category: security
     short_desc: "Catalog-driven, agent-native authorized pentest workbench."
+    description: |
+      SecOpent is an authorized pentest workbench for red, blue, and purple teams that need
+      to coordinate penetration testing across many assets without losing control of the blast
+      radius. The agent never runs anything on its own — every action is a proposal that an
+      operator approves through a deterministic case-DSL workflow. The workbench ships with
+      17 cross-asset adapters (web / network / cloud) and a CoverageMatrix so you can see
+      which surfaces have been probed and which haven't.
     metrics:
       - "17 adapters"
       - "CoverageMatrix"
@@ -85,6 +101,13 @@ projects:
     tagline: "OpenCut materials · vector index"
     category: content
     short_desc: "Third-party material vector indexing + Ed25519 attestation."
+    description: |
+      VidSlice is the material-side companion to OpenCut v3. The pain it solves is simple:
+      when you ingest third-party clips into a video pipeline, you need to know what you've
+      actually got and you need cryptographic proof that the asset hasn't been swapped mid-
+      pipeline. VidSlice extracts three frames per clip, computes embeddings into a LanceDB
+      index, attaches an Ed25519 signature at ingest time, and exposes an HTTP API so other
+      tools (including OpenCut itself) can query the index without scraping anything.
     metrics:
       - "408 tests"
       - "LanceDB storage"
@@ -113,6 +136,13 @@ projects:
     tagline: "AI network engineer"
     category: network
     short_desc: "AI-driven design, config generation, troubleshooting, and audit."
+    description: |
+      NetSage is the project I'd build if every network team had a senior engineer on call
+      for every change. It accepts a plain-English request, drafts the configuration across
+      five vendor syntaxes (Huawei VRP / Cisco IOS-XE / H3C / Juniper / Arista), validates
+      the change inside Containerlab, runs Batfish for ACL and routing analysis, and waits
+      for a human approve before it ever touches production. If the change breaks something,
+      the snapshot rolls back. The whole loop is observable, auditable, and reversible.
     metrics:
       - "8 specialized agents"
       - "30 baseline rules"
@@ -154,6 +184,13 @@ projects:
     tagline: "Multi-domain short-video platform"
     category: content
     short_desc: "AI short-video production from still inputs to 1080x1920 vertical."
+    description: |
+      OpenCut v3 is an end-to-end AI short-video pipeline for content teams that need
+      scale but don't have a multi-week post-production budget. Given a topic, a domain
+      preset (education / travel / knowledge_paid / custom), and an input image, the
+      pipeline runs 20 stages — research, script, voice, visuals, edit, BGM, captions,
+      render — and outputs a 1080×1920 vertical video. CLI mode is for batch jobs;
+      SaaS mode is for one-offs.
     metrics:
       - "20-stage pipeline"
       - "4 domains"
@@ -184,8 +221,14 @@ projects:
     tagline: "Hydro fork · OI judge platform"
     category: fork
     short_desc: "Active fork of [hydro-dev/Hydro](https://github.com/hydro-dev/Hydro). TypeScript."
+    description: |
+      Hydro OJ is the de facto open-source judge platform for informatics olympiad
+      training in China. This repository is a long-running fork — we mirror upstream and
+      ship our own patches on top, primarily for performance work, deployment tooling,
+      and Chinese-language doc fixes. The codebase is TypeScript end-to-end and the
+      upstream license (AGPL-3.0) carries over to this fork.
     metrics:
-      - "OO long-running fork"
+      - "Long-running fork"
       - "AGPL-3.0"
       - "TypeScript"
     tech_stack:
